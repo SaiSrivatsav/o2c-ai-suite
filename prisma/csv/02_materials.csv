@@ -1,0 +1,101 @@
+id,materialNumber,description,materialGroup,unitOfMeasure,weight,weightUnit,basePrice,currency,isActive
+60166674-8ba3-4b7f-a8a1-856fad1236cb,MAT-0001,LED Display Panel,Electronics,EA,31.53,KG,1166.93,USD,true
+398ff173-86e4-4b2f-a929-3221e8d239c6,MAT-0002,Wireless Router,Electronics,EA,31.107,KG,1597.14,USD,true
+cf6a321a-ae89-4ee5-9ff3-2e826e06e09c,MAT-0003,Server Rack Unit,Electronics,EA,18.917,KG,1895.58,USD,true
+2f6695f6-c0f8-4361-813f-96dcab7d7341,MAT-0004,UPS Battery Pack,Electronics,EA,30.179,KG,486.96,USD,true
+9404b89e-003d-4fc9-8353-c684be0708d9,MAT-0005,Fiber Optic Cable,Electronics,EA,7.884,KG,1719.23,USD,true
+73f0312d-45f6-44db-a73e-8883074a27d4,MAT-0006,Network Switch 24-Port,Electronics,EA,42.296,KG,1372.52,USD,true
+72399bd0-959e-41dd-a677-1ec17f3af41d,MAT-0007,SSD Storage Drive 1TB,Electronics,EA,37.271,KG,447.65,USD,true
+88e1c06f-fae7-41b0-88e2-643a184a04b7,MAT-0008,RAM Module 16GB,Electronics,EA,36.421,KG,97.79,USD,true
+923a40e7-4179-46a2-9e13-d3c5526167ac,MAT-0009,Ethernet Adapter,Electronics,EA,12.262,KG,1711.42,USD,true
+45bfc536-a3fb-4051-aed1-77ba0c422b3c,MAT-0010,Cooling Fan Assembly,Electronics,EA,48.054,KG,521.09,USD,true
+35049187-8063-4ff0-ab1c-107c698144c8,MAT-0011,Industrial Solvent A,Chemicals,L,8.943,KG,1121.92,USD,true
+23ad7741-05f2-4277-a4d5-ba0d88bd3389,MAT-0012,Cleaning Agent B12,Chemicals,L,46.595,KG,1695.01,USD,true
+910c1a7c-6800-496d-b845-b0073c6d2512,MAT-0013,Adhesive Compound X,Chemicals,L,31.022,KG,314.48,USD,true
+a3234007-fa86-40b4-b17e-94255b516418,MAT-0014,Lubricant Oil Grade 5,Chemicals,L,6.365,KG,1573.44,USD,true
+f04ef0fa-f904-4af1-b2d1-4191ff13f344,MAT-0015,Paint Primer White,Chemicals,L,34.721,KG,64.84,USD,true
+3657e2ea-0055-47e2-96be-837f36090a1e,MAT-0016,Epoxy Resin Clear,Chemicals,L,32.856,KG,1533.56,USD,true
+c20787e9-9ce2-4abc-b51d-fd8918b5072c,MAT-0017,Anti-Corrosion Spray,Chemicals,L,49.267,KG,1402.53,USD,true
+942d50b8-1d33-42b9-af10-03ede4f4e736,MAT-0018,pH Buffer Solution,Chemicals,L,16.769,KG,870.74,USD,true
+4cbb1d69-dd4a-45ea-98f9-88012dac76c5,MAT-0019,Silicone Sealant,Chemicals,L,35.248,KG,655.57,USD,true
+4fdd4c9a-c47c-46d5-bd6c-e9855da59548,MAT-0020,Acetone Technical Grade,Chemicals,L,20.601,KG,865.2,USD,true
+65c739f9-760b-4757-ac7b-402d401e670c,MAT-0021,Hydraulic Pump HP-200,Machinery,EA,21.483,KG,62.18,USD,true
+2c05ae69-6cfe-4a2e-8f9f-19a5071d2e04,MAT-0022,CNC Spindle Motor,Machinery,EA,45.669,KG,1535.37,USD,true
+71f83dec-30ab-4261-95c1-9f924d4db3d6,MAT-0023,Conveyor Belt 10m,Machinery,EA,11.05,KG,1037.35,USD,true
+fa2319d7-7450-4a94-8ca2-177998768fce,MAT-0024,Air Compressor Unit,Machinery,EA,19.474,KG,1245.34,USD,true
+1669eed6-fd27-45e4-bbea-db85a5a0ad3c,MAT-0025,Gear Box Assembly,Machinery,EA,27.155,KG,830.99,USD,true
+c3277893-1114-40fa-8be6-9f9823eb5647,MAT-0026,Welding Torch Kit,Machinery,EA,42.03,KG,253.45,USD,true
+cc208472-9d81-47c8-a86c-888d713bd284,MAT-0027,Drill Press Stand,Machinery,EA,19.841,KG,31.15,USD,true
+ec447f33-911d-4b35-8e2a-bc14096d88b8,MAT-0028,Lathe Chuck 8-inch,Machinery,EA,41.513,KG,969.34,USD,true
+903b109a-a48e-4805-bf97-eeb56a6e5694,MAT-0029,Pneumatic Cylinder,Machinery,EA,37.885,KG,433.66,USD,true
+5f1eb726-585c-4028-bba8-1b91653588fa,MAT-0030,Bearing Set Industrial,Machinery,EA,37.196,KG,346.57,USD,true
+b349fa67-df9a-428a-acdb-1459a9882d6a,MAT-0031,Steel Sheet 2mm,Raw Materials,M,48.58,KG,389.98,USD,true
+b19f6295-6748-4092-97e7-2b8267f9b702,MAT-0032,Aluminum Rod 10mm,Raw Materials,M,6.659,KG,286.12,USD,true
+8212680e-288f-4a8e-8c15-7a6d69b07ed9,MAT-0033,Copper Wire Spool,Raw Materials,M,16.092,KG,1703.64,USD,true
+e0f51398-c7c4-4529-9ff9-7a98fb58cc3e,MAT-0034,Rubber Sheet 5mm,Raw Materials,M,17.589,KG,1776.8,USD,true
+5a80ee4f-c974-4014-942b-4f577beed7d8,MAT-0035,PVC Pipe 4-inch,Raw Materials,M,45.509,KG,1839.39,USD,true
+f07e954b-6f8e-4f89-95b0-7be4b7b5b6bc,MAT-0036,Plywood Board 18mm,Raw Materials,M,7.928,KG,1961.79,USD,true
+2d2943ca-b821-41dc-bace-076cf9cef22a,MAT-0037,Glass Panel Tempered,Raw Materials,M,42.396,KG,1385.79,USD,true
+1ccd8c25-39b2-4716-b553-ba942c6a1649,MAT-0038,Carbon Fiber Sheet,Raw Materials,M,47.236,KG,129.62,USD,true
+108b2aea-5fb8-42e7-b62c-2588f95f4f40,MAT-0039,Brass Fitting Set,Raw Materials,M,44.963,KG,1221.07,USD,true
+3f8486a5-5a05-4011-a27a-59d0d1e19578,MAT-0040,Stainless Steel Bolt Kit,Raw Materials,M,16.176,KG,443.52,USD,true
+0538f843-0ea1-4ce6-b379-b4c611fdce1d,MAT-0041,A4 Paper Ream 500,Office Supplies,EA,41.457,KG,698.63,USD,true
+55b9a745-66ce-4c3a-b79e-9b38fb0d831a,MAT-0042,Toner Cartridge Black,Office Supplies,EA,47.85,KG,1934.66,USD,true
+63aeb6f6-eb50-464e-b2a7-1202b242b365,MAT-0043,Desk Lamp LED,Office Supplies,EA,33.222,KG,1279.9,USD,true
+0ba6b064-c020-4397-9342-d2599bc6fdb4,MAT-0044,Ergonomic Chair Pro,Office Supplies,EA,32.782,KG,1459.33,USD,true
+0565e145-c8eb-4e32-97b7-282a8988df64,MAT-0045,Whiteboard 120cm,Office Supplies,EA,43.76,KG,503.05,USD,true
+4c330d88-57ac-4568-81e2-e1299fdec989,MAT-0046,Projector HD 4000,Office Supplies,EA,33.633,KG,27.96,USD,true
+f77d83ce-223c-49db-abe6-1ca3995e1d41,MAT-0047,Binding Machine,Office Supplies,EA,14.863,KG,1230.21,USD,true
+eb441e4c-7209-4ad8-949b-7dd500718446,MAT-0048,Label Printer Roll,Office Supplies,EA,7.852,KG,1305.78,USD,true
+eba730ba-f46f-4ecf-b893-63892637cf74,MAT-0049,Filing Cabinet 4-Drawer,Office Supplies,EA,30.753,KG,666.88,USD,true
+4863e377-26a3-4feb-9532-ffd35c4228ba,MAT-0050,Standing Desk Frame,Office Supplies,EA,10.974,KG,633.68,USD,true
+8f30334e-c4ed-4729-8217-39f3a5ecd019,MAT-0051,Brake Pad Set Front,Automotive Parts,EA,26.219,KG,1853.96,USD,true
+f9fd9f2b-bd7c-403d-9288-601ec002fdeb,MAT-0052,Oil Filter Standard,Automotive Parts,EA,31.492,KG,299.85,USD,true
+3e9d4440-3f78-4da8-a691-54bce30640ab,MAT-0053,Spark Plug Iridium,Automotive Parts,EA,17.375,KG,1911.43,USD,true
+19d60529-c330-4086-a555-1df208027bf5,MAT-0054,Timing Belt Kit,Automotive Parts,EA,31.725,KG,564.36,USD,true
+793ca806-db35-4f91-acff-e5e8bd856dce,MAT-0055,Alternator 12V,Automotive Parts,EA,36.91,KG,562.14,USD,true
+f30185ab-136d-4e90-a6dc-022f1fb00542,MAT-0056,Radiator Assembly,Automotive Parts,EA,38.776,KG,492.14,USD,true
+a802c0b1-d9cc-4fc5-8ed7-fbdaadaf0368,MAT-0057,Shock Absorber Pair,Automotive Parts,EA,5.134,KG,1809.26,USD,true
+7bfcf829-7d62-4fc6-9c9c-fd9998125eae,MAT-0058,Fuel Pump Electric,Automotive Parts,EA,23.406,KG,1204.86,USD,true
+916f33e7-d13f-4488-88f9-2788366d06f6,MAT-0059,Headlight Bulb LED,Automotive Parts,EA,20.082,KG,689.48,USD,true
+048b08eb-6a25-4330-aee8-1d400d65d555,MAT-0060,Wiper Blade Set,Automotive Parts,EA,8.238,KG,1696.15,USD,true
+9d03b734-5ff9-4578-98d6-66622cee846e,MAT-0061,Cardboard Box 30x30,Packaging,EA,8.615,KG,1767.46,USD,true
+986df3f9-4f5c-4d8c-92b5-b64cefad4d71,MAT-0062,Bubble Wrap Roll 50m,Packaging,EA,9.521,KG,114.54,USD,true
+313b0b29-2123-4f94-b393-fd84e96d14b2,MAT-0063,Stretch Film Pallet,Packaging,EA,8.979,KG,317.05,USD,true
+7b659ef4-3894-44e2-a994-b9eb07053586,MAT-0064,Packing Tape Heavy,Packaging,EA,3.72,KG,1196.37,USD,true
+1856654a-a340-4b51-b787-39d4a6aac92e,MAT-0065,Foam Insert Custom,Packaging,EA,12.102,KG,263.06,USD,true
+8937a1cb-a912-4dca-81f3-177fc4f891f6,MAT-0066,Shipping Label Roll,Packaging,EA,32.421,KG,1399.12,USD,true
+e8d510ea-fe69-4369-b50c-de4c7f906648,MAT-0067,Poly Mailer Large,Packaging,EA,17.987,KG,1941.74,USD,true
+1e49385d-51c3-40ef-9477-6672cdfd3a08,MAT-0068,Desiccant Pack 10g,Packaging,EA,45.129,KG,246.94,USD,true
+b2e3333f-7123-4a91-8a57-9180e07b840b,MAT-0069,Void Fill Paper,Packaging,EA,11.038,KG,981.04,USD,true
+8dfa4aa2-ee86-463a-9b40-e51f3627afba,MAT-0070,Edge Protector 1m,Packaging,EA,22.613,KG,979.24,USD,true
+ef19e1a6-fbf1-4f06-b051-90eaf1e64f9b,MAT-0071,Cotton Fabric Roll 50m,Textiles,M,6.109,KG,587,USD,true
+79249b25-fc57-4b33-bce7-0d2f28d5448b,MAT-0072,Polyester Thread Spool,Textiles,M,2.752,KG,1513.03,USD,true
+7faeb0cc-fdeb-4706-8a39-0374b234ed23,MAT-0073,Denim Sheet Heavy,Textiles,M,47.418,KG,1415.25,USD,true
+a1d7d628-88c0-44c2-91fa-6e3702e0c936,MAT-0074,Silk Fabric Premium,Textiles,M,48.911,KG,1842.51,USD,true
+bb74d430-0a87-4db9-a738-a026bc016e51,MAT-0075,Nylon Webbing 25mm,Textiles,M,18.957,KG,1037.56,USD,true
+62ff749f-d361-43f1-9752-4e95965739ef,MAT-0076,Wool Blend Yarn 1kg,Textiles,M,10.039,KG,1313.59,USD,true
+9f2ef52a-e72e-4b39-bb4e-c3775a065999,MAT-0077,Canvas Tarpaulin,Textiles,M,33.968,KG,1136.44,USD,true
+7c2b9c81-5019-4515-be37-fab9c68881f0,MAT-0078,Elastic Band Roll,Textiles,M,18.26,KG,111.79,USD,true
+897626ce-5edf-4d27-a1e6-4f22a2b22f36,MAT-0079,Velcro Strip 5m,Textiles,M,33.92,KG,313.37,USD,true
+e22b94e2-f5cb-4027-be0b-6b195dc0d177,MAT-0080,Lining Fabric 30m,Textiles,M,10.049,KG,109.9,USD,true
+9e1cafad-c22b-49d9-b8f7-a5939155ab18,MAT-0081,Paracetamol Bulk 25kg,Pharmaceuticals,EA,45.723,KG,882.45,USD,true
+1e2036f3-5254-4baf-b94c-3ccc7fb4774f,MAT-0082,Ibuprofen Powder API,Pharmaceuticals,EA,40.821,KG,1689.41,USD,true
+ce201345-9fac-4c1b-bf5d-7469a536e0d8,MAT-0083,Vitamin C Granules,Pharmaceuticals,EA,41.713,KG,1990.25,USD,true
+606bdfe1-a2d7-444a-adf8-b26de30af02e,MAT-0084,Capsule Shell Gelatin,Pharmaceuticals,EA,23.664,KG,1097.52,USD,true
+d794c123-a890-43b9-a7f8-d596c2a8ed5a,MAT-0085,Blister Pack Foil,Pharmaceuticals,EA,31.347,KG,1501.66,USD,true
+be1d466d-3f31-440e-b94d-6a8e92106328,MAT-0086,Saline Solution IV,Pharmaceuticals,EA,24.617,KG,1477.86,USD,true
+2a647296-1fa3-49bc-8c17-c1238d4ff225,MAT-0087,Syringe 10ml Box,Pharmaceuticals,EA,34.822,KG,802.54,USD,true
+7d177d6b-d62f-41a7-8654-b52558463c23,MAT-0088,Surgical Gloves M,Pharmaceuticals,EA,15.922,KG,875.38,USD,true
+5ec06018-e735-4226-8f50-3e576633a224,MAT-0089,Face Mask N95,Pharmaceuticals,EA,44.179,KG,645.72,USD,true
+1ddc7586-3513-4258-affb-374e39a30335,MAT-0090,Disinfectant Liquid 5L,Pharmaceuticals,EA,10.838,KG,1118.94,USD,true
+0129d1e5-34be-432f-8d26-2a86547037eb,MAT-0091,Wheat Flour 50kg,Food & Beverage,KG,12.191,KG,1593.89,USD,true
+4c6feac5-6f20-46ec-9728-341ee162a94f,MAT-0092,Sugar Refined 25kg,Food & Beverage,KG,8.004,KG,96.73,USD,true
+71b984e7-ae44-447f-8197-720036bc84d1,MAT-0093,Olive Oil Drum 20L,Food & Beverage,KG,13.313,KG,665.79,USD,true
+f1c87962-e295-47c4-8bf1-baa340a21fc8,MAT-0094,Coffee Beans 10kg,Food & Beverage,KG,4.222,KG,479.55,USD,true
+373e4e9a-babc-46d4-9a09-464ba730c171,MAT-0095,Milk Powder Skim,Food & Beverage,KG,49.832,KG,1457.25,USD,true
+17308517-ece7-4c84-9585-04cf9b3cebe6,MAT-0096,Salt Iodized 25kg,Food & Beverage,KG,13.13,KG,338.8,USD,true
+6e455c06-71d3-4168-8af8-291022f89509,MAT-0097,Rice Basmati 50kg,Food & Beverage,KG,5.739,KG,1627.79,USD,true
+7c55de4a-fe7e-4d64-a46d-f3b92accfc8d,MAT-0098,Cocoa Powder 5kg,Food & Beverage,KG,29.605,KG,1895.75,USD,true
+05663a58-f417-4410-9919-81dc296bc9de,MAT-0099,Yeast Active 500g,Food & Beverage,KG,22.142,KG,814.33,USD,true
+936705d2-ba01-4342-a24b-f40c6fda6b56,MAT-0100,Vanilla Extract 1L,Food & Beverage,KG,48.481,KG,1184.77,USD,true

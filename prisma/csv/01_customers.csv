@@ -1,0 +1,51 @@
+id,customerNumber,name,email,phone,address,city,state,postalCode,country,creditLimit,paymentTerms,customerGroup,isActive
+72f5b432-d75b-47de-a702-af5766c139ab,CUST-0001,Acme Corporation,orders@acmecorporation.com,+1-962-187-5940,118 River Rd,Dubai,,00000,UAE,81987.03,NET60,DOMESTIC,true
+37a7a6be-5b9e-4038-bb16-75500ce74640,CUST-0002,TechStart India,orders@techstartindia.com,+1-211-719-5659,217 Station Rd,Houston,TX,77001,USA,253429.05,NET30,INTERCOMPANY,true
+83c5b079-d633-414a-b375-2d508f3089ac,CUST-0003,Global Traders Ltd,orders@globaltradersltd.com,+1-967-303-8009,52 Oak St,Boston,MA,02101,USA,112284.21,NET60,DOMESTIC,true
+1d8d86e6-c047-4a9f-a2ee-960ab148be19,CUST-0004,Sunrise Retail,orders@sunriseretail.com,+1-707-303-5231,496 Enterprise Ln,Bangalore,Karnataka,560001,India,298834.9,NET30,DOMESTIC,true
+1ec25658-f7a5-4f8c-968e-c4252148ee5d,CUST-0005,Pacific Imports Co,orders@pacificimportsco.com,+1-387-355-7736,225 Main St,Los Angeles,CA,90001,USA,442462.71,NET60,DOMESTIC,true
+05c0deef-1297-41f8-ac63-42ba27e45f34,CUST-0006,Delta Systems,orders@deltasystems.com,+1-982-260-4833,377 Station Rd,Mumbai,Maharashtra,400001,India,486530.63,NET30,DOMESTIC,true
+912fdc8a-b1b4-4642-96ce-14002d68546b,CUST-0007,Infoway Solutions,orders@infowaysolutions.com,+1-850-285-9675,474 King St,London,,EC1A 1BB,UK,363035.38,NET45,EXPORT,true
+80362182-5357-489f-a3d9-bb50369dc679,CUST-0008,Nordic Supplies AB,orders@nordicsuppliesab.com,+1-656-803-1216,537 Enterprise Ln,Toronto,ON,M5A 1A1,Canada,247308.06,NET45,DOMESTIC,true
+3c5ae9b9-1a54-4457-a999-b70388f62882,CUST-0009,MegaTech Inc,orders@megatechinc.com,+1-570-731-8140,213 King St,New York,NY,10001,USA,326276.75,NET30,DOMESTIC,true
+3941971d-8354-4750-b19f-258733f9ada8,CUST-0010,BrightPath Labs,orders@brightpathlabs.com,+1-791-637-7924,626 Tech Park Rd,Singapore,,048583,Singapore,125642.29,NET60,DOMESTIC,true
+ca66635d-cd5c-4b95-8081-9ed470ee0c4f,CUST-0011,CloudNine Services,orders@cloudnineservices.com,+1-424-985-4462,702 Tech Park Rd,London,,EC1A 1BB,UK,324609.98,NET60,EXPORT,true
+2729166e-1eb7-4add-9ca9-20ec9f283c47,CUST-0012,Vertex Analytics,orders@vertexanalytics.com,+1-542-611-5466,78 Enterprise Ln,Singapore,,048583,Singapore,332340.01,NET60,EXPORT,true
+9d09cc50-8796-4946-9dc8-41b88058adf4,CUST-0013,Pinnacle Group,orders@pinnaclegroup.com,+1-440-248-8931,322 Industrial Way,Seattle,WA,98101,USA,321796.68,NET15,INTERCOMPANY,true
+81bc3cee-7f5d-48dc-8181-6d603aa2266c,CUST-0014,RedOak Industries,orders@redoakindustries.com,+1-313-603-7400,157 Market St,London,,EC1A 1BB,UK,421437.99,NET45,DOMESTIC,true
+caf3f907-45cd-46ed-b913-b2e0a69d130d,CUST-0015,BlueWave Logistics,orders@bluewavelogistics.com,+1-995-584-3297,951 King St,Bangalore,Karnataka,560001,India,193678.67,NET45,DOMESTIC,true
+32db9aa9-2ba1-4ae9-ab60-33e573ed4aca,CUST-0016,Summit Healthcare,orders@summithealthcare.com,+1-355-881-1826,646 Station Rd,Berlin,,10115,Germany,69076.72,NET45,DOMESTIC,true
+30bb7aaa-468b-47d9-8a49-1469edbdc74f,CUST-0017,Orbit Digital,orders@orbitdigital.com,+1-435-972-4137,620 King St,Bangalore,Karnataka,560001,India,303109.72,NET15,INTERCOMPANY,true
+30197940-e9b3-4b1c-9d3a-56ec42a311bc,CUST-0018,ClearView Optics,orders@clearviewoptics.com,+1-443-179-2731,465 Harbor Blvd,New York,NY,10001,USA,115716.64,NET15,DOMESTIC,true
+0e138a14-6b59-4a00-86e1-3e46e03fde11,CUST-0019,Evergreen Foods,orders@evergreenfoods.com,+1-608-982-4973,457 Market St,London,,EC1A 1BB,UK,154055.58,NET30,EXPORT,true
+0e77fe3f-01f2-45fc-93b5-05ae03af0f55,CUST-0020,SilverLine Transport,orders@silverlinetransport.com,+1-687-919-1306,92 Park Ave,Manchester,,M1 1AA,UK,421036.05,NET30,DOMESTIC,true
+02ee2de6-b631-42ad-9200-bd5f10022153,CUST-0021,Quantum Retail,orders@quantumretail.com,+1-680-952-8223,68 Business Ave,San Francisco,CA,94105,USA,205198,NET60,DOMESTIC,true
+743a3525-a4e5-42cd-98b8-4f8012132acf,CUST-0022,Atlas Engineering,orders@atlasengineering.com,+1-793-521-6301,340 Industrial Way,Mumbai,Maharashtra,400001,India,305251.91,NET15,DOMESTIC,true
+96bfd297-d290-4d5d-8310-e56a6cf7f1a4,CUST-0023,CoreBridge Solutions,orders@corebridgesolutions.com,+1-476-416-5517,287 Industrial Way,Manchester,,M1 1AA,UK,242238.52,NET30,INTERCOMPANY,true
+7324dc14-27c8-47fe-9a48-8e9c7a845ee4,CUST-0024,NovaStar Tech,orders@novastartech.com,+1-344-559-1246,316 River Rd,San Francisco,CA,94105,USA,214025.5,NET30,INTERCOMPANY,true
+3b06f677-2b64-4548-85d8-17ce13f3e030,CUST-0025,PrimePath Consulting,orders@primepathconsulting.com,+1-723-300-3672,614 Park Ave,Austin,TX,73301,USA,425307.06,NET45,DOMESTIC,true
+90b398c9-1db5-42d0-9b56-9ec752d60a8c,CUST-0026,Zenith Electronics,orders@zenithelectronics.com,+1-728-858-7481,298 Station Rd,Dubai,,00000,UAE,61127.86,NET15,EXPORT,true
+b3c1c861-53a8-42d1-9896-d9f56201110a,CUST-0027,Falcon Aerospace,orders@falconaerospace.com,+1-634-793-6520,946 River Rd,Boston,MA,02101,USA,418003.34,NET45,DOMESTIC,true
+d5da28fe-0fdf-45f5-b18a-b1bcdbbf4edb,CUST-0028,Harbor Marine,orders@harbormarine.com,+1-997-581-7590,86 Industrial Way,Dubai,,00000,UAE,227650.18,NET30,EXPORT,true
+e5461c8e-8b40-4930-97b6-80d51ddf608a,CUST-0029,Ironclad Security,orders@ironcladsecurity.com,+1-998-241-2054,818 Innovation Dr,Tokyo,,100-0001,Japan,370346.01,NET45,EXPORT,true
+1ee7e4ce-4837-4eee-92cd-0440e3a59c0d,CUST-0030,Mosaic Designs,orders@mosaicdesigns.com,+1-312-140-1396,914 Station Rd,Toronto,ON,M5A 1A1,Canada,103633.08,NET60,EXPORT,true
+ff23f093-b200-46c9-9d3f-f8e09d32ca6b,CUST-0031,Sapphire Financial,orders@sapphirefinancial.com,+1-528-920-7153,368 Oak St,New York,NY,10001,USA,478211.92,NET45,EXPORT,true
+71910904-e940-496b-8d38-f72d0ae26636,CUST-0032,Trident Pharma,orders@tridentpharma.com,+1-223-938-2881,747 Enterprise Ln,Seattle,WA,98101,USA,70466.43,NET60,DOMESTIC,true
+26d4b373-bde8-4991-8e6f-e0c3f4abd219,CUST-0033,Vanguard Motors,orders@vanguardmotors.com,+1-926-641-5120,403 Market St,Houston,TX,77001,USA,479133.81,NET60,EXPORT,true
+659b31f4-9d77-4534-aa3b-0561706bbe9a,CUST-0034,WildTrail Outdoors,orders@wildtrailoutdoors.com,+1-623-366-1303,309 King St,New York,NY,10001,USA,161797.02,NET30,EXPORT,true
+8a5de554-d5b7-46cd-9cf0-b605ec9758ad,CUST-0035,Apex Innovations,orders@apexinnovations.com,+1-737-539-1101,682 Oak St,Boston,MA,02101,USA,154279.53,NET30,EXPORT,true
+ca3fcf82-2d0d-4d30-bd5b-17ffb8afce7c,CUST-0036,Beacon Software,orders@beaconsoftware.com,+1-414-649-9518,41 High St,London,,EC1A 1BB,UK,296336.83,NET60,EXPORT,true
+42580fca-0e8a-4b72-8342-b7c741190aa7,CUST-0037,Cascade Energy,orders@cascadeenergy.com,+1-547-187-2992,389 Park Ave,Mumbai,Maharashtra,400001,India,458993.63,NET15,DOMESTIC,true
+fef071a5-d184-4992-95c6-15731a308120,CUST-0038,Dynamo Sports,orders@dynamosports.com,+1-823-783-1293,993 High St,Austin,TX,73301,USA,149831.39,NET60,EXPORT,true
+bfac4bba-1cf4-4378-948e-364fe0f1ef37,CUST-0039,Eclipse Media,orders@eclipsemedia.com,+1-953-481-4911,337 Harbor Blvd,Berlin,,10115,Germany,304748.3,NET60,INTERCOMPANY,true
+b6f61001-49ed-409a-9c79-e374b3679ec5,CUST-0040,Frontier Agriculture,orders@frontieragriculture.com,+1-664-173-3682,274 Station Rd,Bangalore,Karnataka,560001,India,343349.02,NET15,EXPORT,true
+f7bf6a72-80f2-4fb4-bfe5-e4ee209eb0c0,CUST-0041,GreenLeaf Organics,orders@greenleaforganics.com,+1-418-873-3955,988 Main St,London,,EC1A 1BB,UK,430244.24,NET30,DOMESTIC,true
+633597bf-68fd-43b0-95be-34f67677293d,CUST-0042,Horizon Textiles,orders@horizontextiles.com,+1-934-172-1839,580 Market St,Los Angeles,CA,90001,USA,267309.81,NET60,EXPORT,true
+92108758-0155-4f43-8061-3c77e859bec3,CUST-0043,Ivory Tower Publishing,orders@ivorytowerpublishing.com,+1-320-694-8207,762 Harbor Blvd,Houston,TX,77001,USA,152296.87,NET30,EXPORT,true
+c6e2c133-b425-4ab1-918b-65f29e2cd965,CUST-0044,JetStream Aviation,orders@jetstreamaviation.com,+1-830-659-5359,578 Industrial Way,Bangalore,Karnataka,560001,India,362067.15,NET60,EXPORT,true
+e09bfc4d-3954-4bdc-a105-924219deb967,CUST-0045,Keystone Construction,orders@keystoneconstruction.com,+1-707-822-3028,294 Park Ave,Berlin,,10115,Germany,72915.45,NET30,EXPORT,true
+ae81f93a-94fe-48cd-bbb0-5a21cb3d21c3,CUST-0046,Lumen Lighting,orders@lumenlighting.com,+1-600-899-2894,95 High St,Seattle,WA,98101,USA,216020.77,NET60,INTERCOMPANY,true
+22fab182-e8d2-44e3-8bec-19570919be08,CUST-0047,Maple Creek Farms,orders@maplecreekfarms.com,+1-699-361-8593,397 High St,Manchester,,M1 1AA,UK,436593.72,NET30,DOMESTIC,true
+9bdd26ed-c368-43c7-89aa-dc3f798ea028,CUST-0048,Neptune Fisheries,orders@neptunefisheries.com,+1-950-781-9265,724 Park Ave,London,,EC1A 1BB,UK,147817.49,NET45,EXPORT,true
+8c602997-9b9f-4dcb-b137-a3cb262691ec,CUST-0049,Omega Chemicals,orders@omegachemicals.com,+1-755-834-6985,597 Business Ave,Los Angeles,CA,90001,USA,75805.24,NET15,EXPORT,true
+57b43ac8-b7f5-4cbe-9ff1-fbb6928e0707,CUST-0050,Phoenix Recycling,orders@phoenixrecycling.com,+1-538-907-8413,233 Main St,San Francisco,CA,94105,USA,97855.12,NET15,DOMESTIC,true

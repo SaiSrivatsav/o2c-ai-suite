@@ -1,8 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,27 +9,335 @@ datasource db {
   provider = "postgresql"
 }
 
+// ─── Master Data ───────────────────────────────────────────────
+
+model Customer {
+  id              String        @id @default(uuid())
+  customerNumber  String        @unique
+  name            String
+  email           String
+  phone           String
+  address         String
+  city            String
+  state           String?
+  postalCode      String
+  country         String
+  creditLimit     Decimal       @db.Decimal(12, 2)
+  paymentTerms    String        @default("NET30")
+  customerGroup   CustomerGroup @default(DOMESTIC)
+  isActive        Boolean       @default(true)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  salesOrders     SalesOrder[]
+  salesPartners   SalesPartner[]
+  invoices        Invoice[]
+  payments        Payment[]
+  creditMemos     CreditMemo[]
+
+  @@map("customers")
+}
+
+model Material {
+  id              String   @id @default(uuid())
+  materialNumber  String   @unique
+  description     String
+  materialGroup   String
+  unitOfMeasure   String   @default("EA")
+  weight          Decimal? @db.Decimal(10, 3)
+  weightUnit      String   @default("KG")
+  basePrice       Decimal  @db.Decimal(12, 2)
+  currency        String   @default("USD")
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  salesOrderItems  SalesOrderItem[]
+  deliveryItems    DeliveryItem[]
+  invoiceItems     InvoiceItem[]
+
+  @@map("materials")
+}
+
+// ─── Sales Order ───────────────────────────────────────────────
+
 model SalesOrder {
-  id              String      @id @default(uuid())
-  orderNumber     String      @unique
-  customerName    String
-  customerEmail   String
-  orderDate       DateTime    @default(now())
-  deliveryDate    DateTime?
-  totalAmount     Decimal     @db.Decimal(10, 2)
-  currency        String      @default("USD")
-  status          OrderStatus @default(PENDING)
-  shippingAddress String
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
+  id                    String           @id @default(uuid())
+  orderNumber           String           @unique
+  customerId            String
+  customer              Customer         @relation(fields: [customerId], references: [id])
+  orderDate             DateTime         @default(now())
+  requestedDeliveryDate DateTime?
+  salesOrg              String           @default("1000")
+  distributionChannel   String           @default("10")
+  division              String           @default("00")
+  totalNetAmount        Decimal          @db.Decimal(12, 2)
+  totalTaxAmount        Decimal          @db.Decimal(12, 2)
+  totalGrossAmount      Decimal          @db.Decimal(12, 2)
+  currency              String           @default("USD")
+  status                SalesOrderStatus @default(DRAFT)
+  paymentTerms          String           @default("NET30")
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @updatedAt
+
+  items          SalesOrderItem[]
+  partners       SalesPartner[]
+  deliveries     Delivery[]
+  invoices       Invoice[]
+  creditMemos    CreditMemo[]
 
   @@map("sales_orders")
 }
 
-enum OrderStatus {
-  PENDING
-  CONFIRMED
+model SalesOrderItem {
+  id              String              @id @default(uuid())
+  salesOrderId    String
+  salesOrder      SalesOrder          @relation(fields: [salesOrderId], references: [id])
+  itemNumber      Int
+  materialId      String
+  material        Material            @relation(fields: [materialId], references: [id])
+  description     String
+  quantity        Decimal             @db.Decimal(10, 2)
+  unitOfMeasure   String              @default("EA")
+  unitPrice       Decimal             @db.Decimal(12, 2)
+  netAmount       Decimal             @db.Decimal(12, 2)
+  taxAmount       Decimal             @db.Decimal(12, 2)
+  currency        String              @default("USD")
+  status          SalesOrderItemStatus @default(OPEN)
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+
+  pricingConditions PricingCondition[]
+  deliveryItems     DeliveryItem[]
+  invoiceItems      InvoiceItem[]
+
+  @@unique([salesOrderId, itemNumber])
+  @@map("sales_order_items")
+}
+
+model SalesPartner {
+  id               String          @id @default(uuid())
+  salesOrderId     String
+  salesOrder       SalesOrder      @relation(fields: [salesOrderId], references: [id])
+  customerId       String
+  customer         Customer        @relation(fields: [customerId], references: [id])
+  partnerFunction  PartnerFunction
+  createdAt        DateTime        @default(now())
+
+  @@unique([salesOrderId, partnerFunction])
+  @@map("sales_partners")
+}
+
+model PricingCondition {
+  id                 String         @id @default(uuid())
+  salesOrderItemId   String
+  salesOrderItem     SalesOrderItem @relation(fields: [salesOrderItemId], references: [id])
+  conditionType      String
+  conditionValue     Decimal        @db.Decimal(12, 2)
+  currency           String         @default("USD")
+  isPercentage       Boolean        @default(false)
+  conditionBase      Decimal        @db.Decimal(12, 2)
+  conditionAmount    Decimal        @db.Decimal(12, 2)
+  createdAt          DateTime       @default(now())
+
+  @@map("pricing_conditions")
+}
+
+// ─── Delivery ──────────────────────────────────────────────────
+
+model Delivery {
+  id              String         @id @default(uuid())
+  deliveryNumber  String         @unique
+  salesOrderId    String
+  salesOrder      SalesOrder     @relation(fields: [salesOrderId], references: [id])
+  deliveryDate    DateTime
+  shippingPoint   String         @default("SP01")
+  shippingAddress String
+  trackingNumber  String?
+  carrier         String?
+  status          DeliveryStatus @default(PLANNED)
+  totalWeight     Decimal?       @db.Decimal(10, 3)
+  weightUnit      String         @default("KG")
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  items    DeliveryItem[]
+  invoices Invoice[]
+
+  @@map("deliveries")
+}
+
+model DeliveryItem {
+  id                String         @id @default(uuid())
+  deliveryId        String
+  delivery          Delivery       @relation(fields: [deliveryId], references: [id])
+  salesOrderItemId  String
+  salesOrderItem    SalesOrderItem @relation(fields: [salesOrderItemId], references: [id])
+  itemNumber        Int
+  materialId        String
+  material          Material       @relation(fields: [materialId], references: [id])
+  deliveredQuantity Decimal        @db.Decimal(10, 2)
+  unitOfMeasure     String         @default("EA")
+  batchNumber       String?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  invoiceItems InvoiceItem[]
+
+  @@map("delivery_items")
+}
+
+// ─── Invoice ───────────────────────────────────────────────────
+
+model Invoice {
+  id              String        @id @default(uuid())
+  invoiceNumber   String        @unique
+  salesOrderId    String
+  salesOrder      SalesOrder    @relation(fields: [salesOrderId], references: [id])
+  deliveryId      String
+  delivery        Delivery      @relation(fields: [deliveryId], references: [id])
+  customerId      String
+  customer        Customer      @relation(fields: [customerId], references: [id])
+  invoiceDate     DateTime
+  dueDate         DateTime
+  totalNetAmount  Decimal       @db.Decimal(12, 2)
+  totalTaxAmount  Decimal       @db.Decimal(12, 2)
+  totalGrossAmount Decimal      @db.Decimal(12, 2)
+  currency        String        @default("USD")
+  status          InvoiceStatus @default(OPEN)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  items       InvoiceItem[]
+  payments    Payment[]
+  creditMemos CreditMemo[]
+
+  @@map("invoices")
+}
+
+model InvoiceItem {
+  id                String         @id @default(uuid())
+  invoiceId         String
+  invoice           Invoice        @relation(fields: [invoiceId], references: [id])
+  salesOrderItemId  String
+  salesOrderItem    SalesOrderItem @relation(fields: [salesOrderItemId], references: [id])
+  deliveryItemId    String
+  deliveryItem      DeliveryItem   @relation(fields: [deliveryItemId], references: [id])
+  materialId        String
+  material          Material       @relation(fields: [materialId], references: [id])
+  itemNumber        Int
+  quantity          Decimal        @db.Decimal(10, 2)
+  unitPrice         Decimal        @db.Decimal(12, 2)
+  netAmount         Decimal        @db.Decimal(12, 2)
+  taxAmount         Decimal        @db.Decimal(12, 2)
+  currency          String         @default("USD")
+  createdAt         DateTime       @default(now())
+
+  @@map("invoice_items")
+}
+
+// ─── Payment & Credit ──────────────────────────────────────────
+
+model Payment {
+  id              String        @id @default(uuid())
+  paymentNumber   String        @unique
+  invoiceId       String
+  invoice         Invoice       @relation(fields: [invoiceId], references: [id])
+  customerId      String
+  customer        Customer      @relation(fields: [customerId], references: [id])
+  paymentDate     DateTime
+  amount          Decimal       @db.Decimal(12, 2)
+  currency        String        @default("USD")
+  paymentMethod   PaymentMethod @default(BANK_TRANSFER)
+  referenceNumber String
+  status          PaymentStatus @default(PENDING)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("payments")
+}
+
+model CreditMemo {
+  id               String          @id @default(uuid())
+  creditMemoNumber String          @unique
+  invoiceId        String
+  invoice          Invoice         @relation(fields: [invoiceId], references: [id])
+  salesOrderId     String
+  salesOrder       SalesOrder      @relation(fields: [salesOrderId], references: [id])
+  customerId       String
+  customer         Customer        @relation(fields: [customerId], references: [id])
+  creditDate       DateTime
+  reason           String
+  totalAmount      Decimal         @db.Decimal(12, 2)
+  currency         String          @default("USD")
+  status           CreditMemoStatus @default(DRAFT)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@map("credit_memos")
+}
+
+// ─── Enums ─────────────────────────────────────────────────────
+
+enum CustomerGroup {
+  DOMESTIC
+  EXPORT
+  INTERCOMPANY
+}
+
+enum SalesOrderStatus {
+  DRAFT
+  OPEN
+  IN_DELIVERY
+  COMPLETED
+  CANCELLED
+}
+
+enum SalesOrderItemStatus {
+  OPEN
+  PARTIALLY_DELIVERED
+  DELIVERED
+  CANCELLED
+}
+
+enum PartnerFunction {
+  SOLD_TO
+  SHIP_TO
+  BILL_TO
+  PAYER
+}
+
+enum DeliveryStatus {
+  PLANNED
+  PICKED
+  PACKED
   SHIPPED
   DELIVERED
+}
+
+enum InvoiceStatus {
+  OPEN
+  PARTIALLY_PAID
+  PAID
+  CANCELLED
+}
+
+enum PaymentMethod {
+  BANK_TRANSFER
+  CREDIT_CARD
+  CHECK
+  CASH
+}
+
+enum PaymentStatus {
+  PENDING
+  CLEARED
+  REVERSED
+}
+
+enum CreditMemoStatus {
+  DRAFT
+  APPROVED
+  POSTED
   CANCELLED
 }
