@@ -1,3 +1,58 @@
+/* ── Theme variables ──────────────────────────────────────── */
+:root {
+  --bg-primary:    #0f172a;
+  --bg-secondary:  #111827;
+  --bg-surface:    #1a1a2e;
+  --bg-hover:      #1e293b;
+  --bg-input:      #1a1a2e;
+  --border:        #2d3748;
+  --border-focus:  #667eea;
+  --text-primary:  #e2e8f0;
+  --text-secondary:#a0aec0;
+  --text-muted:    #718096;
+  --text-dim:      #4a5568;
+  --accent:        #667eea;
+  --accent-hover:  #5a67d8;
+  --user-bubble:   #2b4c7e;
+  --bot-bubble:    #1e293b;
+  --error-bg:      #2d1b1b;
+  --error-border:  #e53e3e;
+  --error-text:    #fc8181;
+  --code-bg:       #0d1117;
+  --scrollbar:     #4a5568;
+  --approval-bg:   #1c2333;
+  --approval-border:#f6ad55;
+  --success-bg:    #1c332a;
+  --success-border:#48bb78;
+}
+
+[data-theme="light"] {
+  --bg-primary:    #f7fafc;
+  --bg-secondary:  #ffffff;
+  --bg-surface:    #edf2f7;
+  --bg-hover:      #e2e8f0;
+  --bg-input:      #ffffff;
+  --border:        #e2e8f0;
+  --border-focus:  #667eea;
+  --text-primary:  #1a202c;
+  --text-secondary:#4a5568;
+  --text-muted:    #718096;
+  --text-dim:      #a0aec0;
+  --accent:        #667eea;
+  --accent-hover:  #5a67d8;
+  --user-bubble:   #ebf4ff;
+  --bot-bubble:    #f7fafc;
+  --error-bg:      #fff5f5;
+  --error-border:  #fc8181;
+  --error-text:    #c53030;
+  --code-bg:       #edf2f7;
+  --scrollbar:     #cbd5e0;
+  --approval-bg:   #fffaf0;
+  --approval-border:#ed8936;
+  --success-bg:    #f0fff4;
+  --success-border:#48bb78;
+}
+
 *,
 *::before,
 *::after {
@@ -9,9 +64,10 @@ html, body {
   padding: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: #0f172a;
-  color: #e2e8f0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
 }
 
 #root {
@@ -27,6 +83,6 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a5568;
+  background: var(--scrollbar);
   border-radius: 3px;
 }

@@ -8,6 +8,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from langchain_core.messages import HumanMessage, AIMessage
+from langgraph.types import Command
 
 from config import (
     UPLOAD_DIR,
@@ -29,6 +31,9 @@ from rag.chain import (
     clear_session_history,
     reset_chain,
 )
+from agents.graph import get_graph
+from tools.rag_tools import set_document_registry
+from db.connection import close_pool
 
 logging.basicConfig(
     level=logging.INFO,
@@ -43,16 +48,32 @@ uploaded_documents: dict[str, dict] = {}
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting up — ensuring Pinecone index exists...")
-    ensure_index_exists()
+    try:
+        ensure_index_exists()
+    except Exception as e:
+        logger.warning(f"Pinecone init skipped: {e}")
+
+    # Share the document registry with RAG tools
+    set_document_registry(uploaded_documents)
+
+    # Pre-build the LangGraph agent graph
+    logger.info("Building LangGraph agent graph…")
+    try:
+        get_graph()
+        logger.info("LangGraph ready.")
+    except Exception as e:
+        logger.warning(f"LangGraph init deferred: {e}")
+
     logger.info("Ready.")
     yield
     logger.info("Shutting down.")
+    await close_pool()
 
 
 app = FastAPI(
-    title="O2C RAG Bot",
-    description="Production-grade RAG chatbot powered by LangChain, AWS Bedrock & Pinecone",
-    version="1.0.0",
+    title="O2C AI Suite",
+    description="Multi-agent O2C system powered by LangGraph, AWS Bedrock & Pinecone",
+    version="2.0.0",
     lifespan=lifespan,
 )
 
@@ -71,10 +92,18 @@ class ChatRequest(BaseModel):
     session_id: str | None = None
 
 
+class ResumeRequest(BaseModel):
+    thread_id: str
+    approved: bool
+    comment: str = ""
+
+
 class ChatResponse(BaseModel):
     answer: str
     session_id: str
-    sources: list[dict]
+    sources: list[dict] = []
+    agent: str = ""
+    approval_request: dict | None = None
 
 
 class DocumentInfo(BaseModel):
@@ -183,38 +212,114 @@ async def delete_document(document_id: str):
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
-    if not uploaded_documents:
-        raise HTTPException(
-            status_code=400,
-            detail="No documents uploaded yet. Please upload a document first.",
+    thread_id = req.session_id or str(uuid.uuid4())
+    graph = get_graph()
+    config = {"configurable": {"thread_id": thread_id}}
+
+    try:
+        result = await graph.ainvoke(
+            {"messages": [HumanMessage(content=req.message)]},
+            config=config,
+        )
+    except Exception as e:
+        logger.exception("Agent invocation error")
+        raise HTTPException(status_code=500, detail=str(e))
+
+    # Check for interrupts (human-in-the-loop)
+    state = graph.get_state(config)
+    if state.next:
+        # Graph is paused — extract interrupt payload
+        interrupt_data = {}
+        if state.tasks:
+            for task in state.tasks:
+                if hasattr(task, "interrupts") and task.interrupts:
+                    interrupt_data = task.interrupts[0].value
+                    break
+
+        # Get the last AI message before the interrupt
+        messages = result.get("messages", [])
+        last_ai = ""
+        for msg in reversed(messages):
+            if isinstance(msg, AIMessage) and msg.content:
+                last_ai = msg.content
+                break
+
+        return ChatResponse(
+            answer=last_ai or "An action requires your approval before proceeding.",
+            session_id=thread_id,
+            agent=state.values.get("active_agent", ""),
+            approval_request=interrupt_data,
         )
 
-    session_id = req.session_id or str(uuid.uuid4())
-    chain = get_rag_chain()
-
-    result = chain.invoke(
-        {"input": req.message},
-        config={"configurable": {"session_id": session_id}},
-    )
-
-    # Extract source metadata from retrieved documents
-    sources = []
-    seen = set()
-    for doc in result.get("context", []):
-        meta = doc.metadata
-        key = (meta.get("document_name", ""), meta.get("chunk_index", 0))
-        if key not in seen:
-            seen.add(key)
-            sources.append({
-                "document": meta.get("document_name", "Unknown"),
-                "page": meta.get("page_number"),
-                "chunk": meta.get("chunk_index"),
-            })
+    # Normal completion — extract answer from last AI message
+    messages = result.get("messages", [])
+    answer = ""
+    for msg in reversed(messages):
+        if isinstance(msg, AIMessage) and msg.content:
+            answer = msg.content
+            break
 
     return ChatResponse(
-        answer=result["answer"],
-        session_id=session_id,
-        sources=sources,
+        answer=answer or "I processed your request but have no additional information to share.",
+        session_id=thread_id,
+        agent=result.get("active_agent", ""),
+    )
+
+
+@app.post("/api/chat/resume", response_model=ChatResponse)
+async def resume_chat(req: ResumeRequest):
+    """Resume a paused agent after human-in-the-loop approval/rejection."""
+    graph = get_graph()
+    config = {"configurable": {"thread_id": req.thread_id}}
+
+    # Check that this thread actually has a pending interrupt
+    state = graph.get_state(config)
+    if not state.next:
+        raise HTTPException(status_code=400, detail="No pending approval for this thread.")
+
+    human_response = {"approved": req.approved, "comment": req.comment}
+
+    try:
+        result = await graph.ainvoke(
+            Command(resume=human_response),
+            config=config,
+        )
+    except Exception as e:
+        logger.exception("Agent resume error")
+        raise HTTPException(status_code=500, detail=str(e))
+
+    # Check for further interrupts
+    state = graph.get_state(config)
+    if state.next:
+        interrupt_data = {}
+        if state.tasks:
+            for task in state.tasks:
+                if hasattr(task, "interrupts") and task.interrupts:
+                    interrupt_data = task.interrupts[0].value
+                    break
+        messages = result.get("messages", [])
+        last_ai = ""
+        for msg in reversed(messages):
+            if isinstance(msg, AIMessage) and msg.content:
+                last_ai = msg.content
+                break
+        return ChatResponse(
+            answer=last_ai or "Another action requires your approval.",
+            session_id=req.thread_id,
+            approval_request=interrupt_data,
+        )
+
+    # Completed
+    messages = result.get("messages", [])
+    answer = ""
+    for msg in reversed(messages):
+        if isinstance(msg, AIMessage) and msg.content:
+            answer = msg.content
+            break
+
+    return ChatResponse(
+        answer=answer or "Action completed.",
+        session_id=req.thread_id,
     )
 
 

@@ -23,23 +23,57 @@ export async function uploadDocument(file) {
 }
 
 export async function sendMessage(message, sessionId) {
-  const res = await fetch(`${API_BASE}/chat`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message, session_id: sessionId }),
-  });
+  let res;
+  try {
+    res = await fetch(`${API_BASE}/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message, session_id: sessionId }),
+    });
+  } catch (err) {
+    throw new Error("Cannot reach the server. Is the backend running?");
+  }
 
   if (!res.ok) {
     const text = await res.text();
+    let detail = `Server error (${res.status})`;
     try {
       const err = JSON.parse(text);
-      throw new Error(err.detail || "Chat failed");
-    } catch (e) {
-      if (e.message && e.message !== "Chat failed") throw e;
-      throw new Error(text || "Chat failed");
-    }
+      detail = err.detail || detail;
+    } catch {}
+    throw new Error(detail);
   }
-  return res.json();
+
+  const text = await res.text();
+  if (!text) throw new Error("Empty response from server");
+  return JSON.parse(text);
+}
+
+export async function resumeChat(threadId, approved, comment = "") {
+  let res;
+  try {
+    res = await fetch(`${API_BASE}/chat/resume`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ thread_id: threadId, approved, comment }),
+    });
+  } catch (err) {
+    throw new Error("Cannot reach the server. Is the backend running?");
+  }
+
+  if (!res.ok) {
+    const text = await res.text();
+    let detail = `Server error (${res.status})`;
+    try {
+      const err = JSON.parse(text);
+      detail = err.detail || detail;
+    } catch {}
+    throw new Error(detail);
+  }
+
+  const text = await res.text();
+  if (!text) throw new Error("Empty response from server");
+  return JSON.parse(text);
 }
 
 export async function getDocuments() {
