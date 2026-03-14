@@ -1,5 +1,28 @@
-node_modules
+node_modules/
 # Keep environment variables out of version control
 .env
+.env.local
 
-/generated/prisma
+# Prisma generated
+**/generated/prisma
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Backend uploads (temp)
+o2c-rag/backend/uploads/
+
+# Frontend build
+o2c-rag/frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

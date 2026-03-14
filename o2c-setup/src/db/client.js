@@ -3,7 +3,9 @@ const { PrismaClient } = pkg;
 import pg from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import * as dotenv from "dotenv";
-dotenv.config();
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+dotenv.config({ path: resolve(dirname(fileURLToPath(import.meta.url)), '../../../.env') });
 
 const connectionString = process.env.DATABASE_URL.replace(/[?&]sslmode=[^&]*/g, '');
 const pool = new pg.Pool({

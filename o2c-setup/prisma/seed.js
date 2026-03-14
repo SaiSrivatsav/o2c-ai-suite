@@ -6,7 +6,8 @@ import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import * as dotenv from "dotenv";
-dotenv.config();
+import { resolve } from "path";
+dotenv.config({ path: resolve(dirname(fileURLToPath(import.meta.url)), '../../.env') });
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const csvDir = join(__dirname, "csv");
