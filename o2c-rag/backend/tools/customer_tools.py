@@ -51,6 +51,7 @@ async def list_customers(
     idx += 1
     conditions.append(f'"creditLimit" <= ${idx}')
     params.append(max_credit_limit)
+    idx += 1
 
     where = " AND ".join(conditions)
     actual_limit = min(limit, 200)
