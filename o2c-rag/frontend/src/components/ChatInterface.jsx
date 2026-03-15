@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { sendMessage, resumeChat } from "../api";
 import ApprovalCard from "./ApprovalCard.jsx";
 import "./ChatInterface.css";
@@ -153,7 +154,7 @@ export default function ChatInterface({ sessionId, setSessionId }) {
             </div>
             <div className="message-body">
               {msg.role === "assistant" ? (
-                <ReactMarkdown>{msg.content}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
               ) : (
                 <p>{msg.content}</p>
               )}

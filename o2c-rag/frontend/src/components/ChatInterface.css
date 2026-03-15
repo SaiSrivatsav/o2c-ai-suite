@@ -179,6 +179,8 @@
   border-collapse: collapse;
   font-size: 13px;
   margin: 8px 0;
+  display: block;
+  overflow-x: auto;
 }
 
 .message-body th,
