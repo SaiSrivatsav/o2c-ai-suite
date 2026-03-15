@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from langchain_core.tools import tool
 from db.connection import fetch_all, fetch_one
 
@@ -17,11 +18,11 @@ async def get_order_analytics(
 
     if period_from:
         conditions.append(f'so."orderDate" >= ${idx}::timestamp')
-        params.append(period_from)
+        params.append(datetime.fromisoformat(period_from))
         idx += 1
     if period_to:
         conditions.append(f'so."orderDate" <= ${idx}::timestamp')
-        params.append(period_to + "T23:59:59")
+        params.append(datetime.fromisoformat(period_to + "T23:59:59"))
         idx += 1
     if customer_identifier:
         conditions.append(
@@ -81,11 +82,11 @@ async def get_revenue_analytics(
 
     if period_from:
         conditions.append(f'inv."invoiceDate" >= ${idx}::timestamp')
-        params.append(period_from)
+        params.append(datetime.fromisoformat(period_from))
         idx += 1
     if period_to:
         conditions.append(f'inv."invoiceDate" <= ${idx}::timestamp')
-        params.append(period_to + "T23:59:59")
+        params.append(datetime.fromisoformat(period_to + "T23:59:59"))
         idx += 1
 
     where = "WHERE " + " AND ".join(conditions) if conditions else ""
@@ -150,11 +151,11 @@ async def get_payment_analytics(
 
     if period_from:
         conditions.append(f'p."paymentDate" >= ${idx}::timestamp')
-        params.append(period_from)
+        params.append(datetime.fromisoformat(period_from))
         idx += 1
     if period_to:
         conditions.append(f'p."paymentDate" <= ${idx}::timestamp')
-        params.append(period_to + "T23:59:59")
+        params.append(datetime.fromisoformat(period_to + "T23:59:59"))
         idx += 1
 
     where = "WHERE " + " AND ".join(conditions) if conditions else ""
@@ -217,11 +218,11 @@ async def get_delivery_performance(
 
     if period_from:
         conditions.append(f'd."deliveryDate" >= ${idx}::timestamp')
-        params.append(period_from)
+        params.append(datetime.fromisoformat(period_from))
         idx += 1
     if period_to:
         conditions.append(f'd."deliveryDate" <= ${idx}::timestamp')
-        params.append(period_to + "T23:59:59")
+        params.append(datetime.fromisoformat(period_to + "T23:59:59"))
         idx += 1
 
     where = "WHERE " + " AND ".join(conditions) if conditions else ""
